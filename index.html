@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="HoldingCo LLC — U.S.-based KYB-compliant cryptocurrency asset holding company">
+  <meta name="description" content="Scaman Collective LLC — U.S.-based KYB-compliant cryptocurrency asset holding company">
   <meta name="robots" content="index, follow">
-  <title>HoldingCo LLC — U.S. Crypto Holding Company</title>
+  <title>Scaman Collective LLC — U.S. Crypto Holding Company</title>
 
   <style>
     /* ========== CSS Variables & Root ========== */
@@ -130,97 +130,100 @@
       }
     }
 
-    /* ========== Cookie Banner ========== */
-    #cookie-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background-color: var(--color-bg-banner);
-      border-top: 1px solid var(--color-border);
-      padding: var(--spacing-md);
-      transform: translateY(100%);
-      transition: transform 350ms var(--transition-ease);
-      box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.4);
+    /* ========== Hamburger Menu ========== */
+    .nav-menu {
+      display: none;
     }
 
-    #cookie-banner.is-visible {
-      transform: translateY(0);
+    .nav-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: var(--font-size-xl);
+      color: var(--color-accent-cyan);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      user-select: none;
     }
 
-    .banner-inner {
-      max-width: var(--max-width);
-      margin-inline: auto;
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-sm);
-      align-items: flex-start;
+    .nav-toggle:focus-visible {
+      outline: var(--focus-outline);
+      outline-offset: var(--focus-offset);
     }
 
-    @media (min-width: 640px) {
-      .banner-inner {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+    @media (max-width: 639px) {
+      .nav-menu {
+        display: block;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: var(--color-bg-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        margin-top: var(--spacing-xs);
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      #site-nav {
+        padding: var(--spacing-sm);
+      }
+
+      #site-nav ul {
+        flex-direction: column;
+        gap: var(--spacing-sm);
       }
     }
 
-    .banner-text {
-      font-size: var(--font-size-sm);
-      color: var(--color-text-primary);
-      flex: 1;
-    }
+    @media (min-width: 640px) {
+      .nav-menu {
+        display: contents;
+      }
 
-    .banner-dismiss {
-      flex-shrink: 0;
-      padding: var(--spacing-xs) var(--spacing-md);
-      background-color: var(--color-btn-dismiss-bg);
-      color: var(--color-btn-dismiss-text);
-      border: none;
-      border-radius: var(--radius-sm);
-      font-family: var(--font-family);
-      font-size: var(--font-size-sm);
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color var(--transition-speed) var(--transition-ease),
-                  transform var(--transition-speed) var(--transition-ease);
-    }
-
-    .banner-dismiss:hover {
-      background-color: #67E8F9;
-      transform: translateY(-1px);
-    }
-
-    .banner-dismiss:active {
-      transform: translateY(0);
+      #site-nav {
+        padding: 0;
+      }
     }
 
     /* ========== Header ========== */
     #site-header {
       border-bottom: 1px solid var(--color-border);
       padding-block: var(--spacing-sm);
+      position: relative;
+    }
+
+    @media (min-width: 640px) {
+      #site-header {
+        padding-block: var(--spacing-md);
+      }
     }
 
     .header-inner {
       display: flex;
+      flex-direction: row;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
+      gap: var(--spacing-md);
+      position: relative;
     }
 
     .site-logo {
-      font-size: var(--font-size-lg);
-      font-weight: 700;
-      color: var(--color-accent-cyan);
-      text-decoration: none;
-      letter-spacing: -0.02em;
+      display: none;
     }
 
     #site-nav ul {
       list-style: none;
       display: flex;
-      gap: var(--spacing-md);
+      flex-direction: column;
+      gap: var(--spacing-xs);
       flex-wrap: wrap;
+    }
+
+    @media (min-width: 640px) {
+      #site-nav ul {
+        flex-direction: row;
+        gap: var(--spacing-md);
+      }
     }
 
     .nav-link {
@@ -464,46 +467,20 @@
   <!-- Skip Navigation Link -->
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <!-- Cookie/Privacy Banner -->
-  <div
-    id="cookie-banner"
-    role="region"
-    aria-label="Privacy notice"
-    aria-live="polite"
-    aria-atomic="true"
-    aria-hidden="true"
-  >
-    <div class="banner-inner container">
-      <p class="banner-text" id="banner-desc">
-        This site stores <strong>no cookies</strong> and collects no personal data.
-        We do not use analytics, advertising trackers, or any third-party scripts
-        that process visitor information. No data is sold or shared.
-      </p>
-      <button
-        class="banner-dismiss"
-        type="button"
-        aria-label="Dismiss privacy notice"
-        aria-describedby="banner-desc"
-      >
-        Got it
-      </button>
-    </div>
-  </div>
-
   <!-- Header -->
   <header id="site-header" role="banner">
     <div class="header-inner container">
-      <a href="#hero" class="site-logo" aria-label="HoldingCo LLC — home">
-        HoldingCo
-      </a>
-      <nav id="site-nav" aria-label="Page sections">
-        <ul>
-          <li><a class="nav-link" href="#about">About</a></li>
-          <li><a class="nav-link" href="#compliance">Operations</a></li>
-          <li><a class="nav-link" href="#privacy-policy">Privacy</a></li>
-          <li><a class="nav-link" href="#site-footer">Contact</a></li>
-        </ul>
-      </nav>
+      <details id="nav-menu" class="nav-menu">
+        <summary class="nav-toggle" aria-label="Toggle navigation menu">☰</summary>
+        <nav id="site-nav" aria-label="Page sections">
+          <ul>
+            <li><a class="nav-link" href="#about">About</a></li>
+            <li><a class="nav-link" href="#compliance">Operations</a></li>
+            <li><a class="nav-link" href="#privacy-policy">Privacy</a></li>
+            <li><a class="nav-link" href="#site-footer">Contact</a></li>
+          </ul>
+        </nav>
+      </details>
     </div>
   </header>
 
@@ -514,7 +491,7 @@
       <div class="container">
         <span class="hero-eyebrow" aria-hidden="true">U.S.-Based · Transparency Focused</span>
         <h1 id="hero-heading" class="hero-title">
-          HoldingCo <span class="accent">LLC</span>
+          Scaman Collective <span class="accent">LLC</span>
         </h1>
         <p class="hero-tagline">
           A U.S.-registered limited liability company that holds digital assets
@@ -544,13 +521,13 @@
         <p class="section-label" aria-hidden="true">About</p>
         <h2 id="about-heading" class="section-heading">What We Do</h2>
         <p class="section-body">
-          HoldingCo LLC is a U.S.-based holding company formed under the laws of
+          Scaman Collective LLC is a U.S.-based holding company formed under the laws of
           Wyoming and registered at 1309 Coffeen Avenue STE 1200, Sheridan, WY 82801.
           The company holds digital assets — including cryptocurrencies — exclusively
           for its own use, with all holdings maintained within United States jurisdiction.
         </p>
         <p class="section-body">
-          HoldingCo LLC operates solely for proprietary purposes and does not provide
+          Scaman Collective LLC operates solely for proprietary purposes and does not provide
           services to third parties. All digital assets are held in accounts registered
           to the LLC on U.S.-licensed exchanges or in self-custodial wallets owned and
           controlled exclusively by the company.
@@ -640,26 +617,25 @@
           <h3>No Cookies or Storage</h3>
           <p>
             This site sets no cookies — neither first-party nor third-party.
-            No data is written to <code>localStorage</code>, <code>IndexedDB</code>, or any persistent
-            browser storage mechanism. The privacy notice banner on this page
-            uses <code>sessionStorage</code> exclusively to remember your
-            dismissal for the current browser session only, and stores no
-            personally identifying information.
+            No data is written to browser storage of any kind.
           </p>
         </div>
 
         <div class="policy-block">
           <h3>No Third-Party Scripts or CDNs</h3>
           <p>This site loads no external JavaScript, advertising pixels,
-            social media widgets, embedded maps, or any third-party resources
-            that could track visitor behavior. No data is sold, shared, licensed,
-            or transferred to any party for any purpose.</p>
+            social media widgets, embedded maps, or any tracking code. No visitor
+            data is collected, processed, or transmitted to third parties by this site.</p>
+          <p>GitHub Pages (our hosting provider) may maintain standard server logs
+            recording request metadata (IP address, timestamp, user agent) for
+            infrastructure and security purposes, which is standard web server practice.
+            This site does not have access to or control over these logs.</p>
         </div>
 
         <div class="policy-block">
           <h3>Purely Informational Site</h3>
           <p>
-            HoldingCo LLC operates this website solely to provide
+            Scaman Collective LLC operates this website solely to provide
             informational context and transparency about the company. The site
             accepts no form submissions, account registrations, service requests,
             or user input of any kind. This is not a service platform.
@@ -671,10 +647,10 @@
           <p>
             Questions regarding this privacy policy may be directed to
             <a
-              href="mailto:info@holdingco.com"
+              href="mailto:contact@scamancollectivellc.biz"
               class="footer-email"
-              aria-label="Send email to info at holdingco dot com"
-            >info@holdingco.com</a>.
+              aria-label="Send email to info at scaman collective llc dot com"
+            >contact@scamancollectivellc.biz</a>.
           </p>
         </div>
 
@@ -686,78 +662,25 @@
   <!-- Footer -->
   <footer id="site-footer" role="contentinfo">
     <div class="container footer-inner">
-      <p class="footer-company">HoldingCo LLC</p>
+      <p class="footer-company">Scaman Collective LLC</p>
       <p class="footer-tagline">U.S.-Based Digital Asset Holding Company</p>
       <address style="font-style: normal; font-size: var(--font-size-sm); color: var(--color-text-secondary);">
         1309 Coffeen Avenue STE 1200<br>
         Sheridan, WY 82801
       </address>
       <a
-        href="mailto:info@holdingco.com"
+        href="mailto:contact@scamancollectivellc.biz"
         class="footer-email"
-        aria-label="Send email to info at holdingco dot com"
+        aria-label="Send email to info at scaman collective llc dot com"
       >
-        info@holdingco.com
+        contact@scamancollectivellc.biz
       </a>
       <p class="footer-legal">
-        &copy; <span id="copyright-year"></span> HoldingCo LLC.
+        &copy; 2026 Scaman Collective LLC.
         All rights reserved. This site contains no cookies and collects no data.
       </p>
     </div>
   </footer>
-
-  <script>
-    (function () {
-      'use strict';
-
-      const BANNER_KEY = 'privacy_banner_dismissed';
-      const banner = document.getElementById('cookie-banner');
-      const dismissBtn = document.querySelector('.banner-dismiss');
-
-      function showBanner() {
-        banner.removeAttribute('aria-hidden');
-        requestAnimationFrame(function () {
-          requestAnimationFrame(function () {
-            banner.classList.add('is-visible');
-          });
-        });
-      }
-
-      function dismissBanner() {
-        banner.classList.remove('is-visible');
-        banner.addEventListener('transitionend', function handler() {
-          banner.setAttribute('aria-hidden', 'true');
-          banner.removeEventListener('transitionend', handler);
-        }, { once: true });
-        try {
-          sessionStorage.setItem(BANNER_KEY, '1');
-        } catch (e) {
-          // sessionStorage unavailable (private browsing) — silent fail
-        }
-      }
-
-      if (!sessionStorage.getItem(BANNER_KEY)) {
-        setTimeout(showBanner, 800);
-      }
-
-      if (dismissBtn) {
-        dismissBtn.addEventListener('click', dismissBanner);
-      }
-
-      document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape' && banner.classList.contains('is-visible')) {
-          dismissBanner();
-          document.querySelector('.skip-link').focus();
-        }
-      });
-    })();
-
-    (function () {
-      var el = document.getElementById('copyright-year');
-      if (el) {
-        el.textContent = new Date().getFullYear();
-      }
-    })();
-  </script>
 </body>
+</html>
 </html>
