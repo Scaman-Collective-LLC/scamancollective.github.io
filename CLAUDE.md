@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a static HTML5/CSS3/JavaScript splash page for HoldingCo LLC, a U.S.-based cryptocurrency asset holding company. The site is designed for KYB (Know Your Business) due diligence purposes and is fully WCAG 2.2 AA compliant with no external dependencies.
+This is a static HTML5/CSS3 splash page for Scaman Collective LLC, a U.S.-based cryptocurrency asset holding company. The site is designed for KYB (Know Your Business) due diligence purposes and is fully WCAG 2.2 AA compliant with zero external dependencies and no JavaScript.
 
 ## Development
 
@@ -22,9 +22,9 @@ Alternatively, use `npx serve .` if Node is available.
 
 ### Architecture
 
-- **Single file**: `index.html` contains all HTML, CSS (in `<style>` block), and JavaScript (in `<script>` block at the bottom)
-- **No dependencies**: No npm packages, no build tools, no external libraries
-- **Minimal external requests**: System fonts only. No Google Fonts, no analytics, no tracking scripts
+- **Single file**: `index.html` contains all HTML and CSS (in `<style>` block) — no JavaScript
+- **No dependencies**: No npm packages, no build tools, no external libraries, no JavaScript
+- **Zero external requests**: System fonts only. No Google Fonts, no analytics, no tracking scripts
 - **CSS custom properties**: All colors, spacing, and typography are defined in `:root` as CSS variables — edit these, not scattered property values
 
 ## Accessibility & WCAG 2.2 AA Compliance
@@ -38,10 +38,9 @@ This is a hard requirement. All changes must maintain:
 - **Responsive**: No horizontal scroll at 320px viewport, layout reflows at 640px breakpoint
 
 Before committing changes, verify with:
-1. Manual tab through entire page (all interactive elements get cyan outline)
+1. Manual tab through entire page (all links and details summary get cyan outline)
 2. Test with browser zoom at 200% and 400%
 3. Run WAVE or axe DevTools browser extension to catch regressions
-4. Test dismissal of cookie banner with Escape key
 
 ## Color System
 
@@ -57,16 +56,6 @@ Theme colors are in the `:root` CSS block:
 
 All verified WCAG AA against the dark background. **Do not change color values without rechecking contrast ratios.**
 
-## Cookie Banner
-
-The privacy/cookie banner at the bottom of the page:
-- Uses `sessionStorage` (not `localStorage`) to store a dismissal flag — intentional, as this avoids any persistent storage
-- Starts hidden and slides in after 800ms via JavaScript
-- Announces itself to screen readers via `aria-live="polite"` and `aria-atomic="true"` (live region)
-- Slides out when dismissed via button or Escape key
-- Returns focus to the skip link after dismissal
-
-**Do not change this to use `localStorage`** — that would create a persistent cookie-like behavior, contradicting the privacy policy.
 
 ## Page Sections
 
@@ -87,7 +76,7 @@ Sections are identified by CSS `id` attributes, which the in-page nav links refe
 
 ## Copyright Year
 
-The footer copyright year is injected via JavaScript (`new Date().getFullYear()`). The HTML placeholder `<span id="copyright-year"></span>` is replaced on page load. **Do not hardcode the year.**
+The footer includes a hardcoded copyright year. Update this annually in the footer section of index.html.
 
 ## No Forms
 
@@ -95,6 +84,8 @@ This is purely informational — there are no form fields, input fields, or user
 
 ---
 
-**Created**: April 20, 2026  
+**Company**: Scaman Collective LLC  
+**Email**: contact@scamancollectivellc.biz  
+**Domain**: scamancollectivellc.biz (via GitHub Pages)  
 **Status**: WCAG 2.2 AA Compliant  
-**Theme**: Dark mode (cyan + orange accents, white text, system sans-serif)
+**Architecture**: Pure HTML/CSS, zero JavaScript, zero external dependencies
